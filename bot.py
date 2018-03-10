@@ -99,9 +99,9 @@ def do_thing(m):
         for c in command:
             if c.lower() not in "abcdefghijklmnopqrstuvwxyz 0123456789": return
 
-    command = "\n".join(lines)
+    command = "\n".join(lines) + "\n" if len(lines) > 0 else ""
     restore = "restore\n{}\n".format(savefile) if not newsave else ""
-    c = "{}{}\nsave\n{}\ny\n".format(restore,command,savefile)
+    c = "{}{}save\n{}\ny\n".format(restore,command,savefile)
 
     cwd = os.getcwd()
     os.chdir("./{}".format(gamedir))
